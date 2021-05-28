@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teams;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -13,51 +14,33 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Teams::all();
+        return response()->json(['teams' => $teams], 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function teamName(Request $request)
     {
-        //
-    }
+        $name = $request->name;
+        $result = Teams::where('name', $name)->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return response()->json($result);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function teamConfederation(Request $request)
     {
-        //
+        $confederation = $request->confederation;
+        $result = Teams::where('confederation', $confederation)->get();
+
+        return response()->json($result);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function teamManager(Request $request)
     {
-        //
+        try {
+
+            $manager = $request->manager;
+            $result = Teams::where('manager', $manager)->get();
+            return response()->json($result);
+        } catch (\Exception $err) {
+            return response()->json(['Error Message' => 'Entrenador no encontrado']);
+        }
     }
 }

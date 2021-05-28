@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,18 @@ Route::group(
                 Route::get('logout', [AuthController::class, 'logout']);
             }
         );
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'teams',
+        'middleware' => 'auth:api'
+    ],
+    function () {
+        Route::get('/', [TeamController::class, 'index']);
+        Route::get('/team', [TeamController::class, 'teamName']);
+        Route::get('/confederation', [TeamController::class, 'teamConfederation']);
+        Route::get('/manager', [TeamController::class, 'teamManager']);
     }
 );
