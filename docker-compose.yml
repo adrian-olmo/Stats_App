@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     build:
-      context: .
+      context: ./stats_app_bd
       dockerfile: Dockerfile
     ports:
       - 8000:8000
