@@ -1,0 +1,47 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ./stats_app_bd
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+
+  stats_database:
+    image: mysql:latest # use latest version of mysql
+
+    container_name: stats_database # add a name for the container
+    command: --default-authentication-plugin=mysql_native_password
+
+    restart: unless-stopped
+
+    environment: # add default values, see docs for more info.
+      MYSQL_USER: adrian_olmo
+      MYSQL_ROOT_PASSWORD: adrian_olmo
+      MYSQL_PASSWORD: adrian_olmo
+      MYSQL_DATABASE: stats_app # create this database on startup
+
+    healthcheck:
+      test: '/usr/bin/mysql --user=adrian_olmo --password=adrian_olmo --execute "SHOW DATABASES;"'
+      interval: 2s
+      timeout: 20s
+      retries: 10
+
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    container_name: stats_phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8082:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: adrian_olmo #(Required) set the password for the root superuser account.
+      PMA_HOST: stats_database # define the address/hostname of the mysql server eg mysql container name.
+      PMA_USER: root # this is the root user to login on startup
+      PMA_PASSWORD: adrian_olmo # use the root password to login on startup.
+      # Create a new user on startup (optional)
+      # MYSQL_USER: newuser
+      # MYSQL_PASSWORD: mypassword
