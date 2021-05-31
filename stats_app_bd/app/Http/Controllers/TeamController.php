@@ -21,14 +21,14 @@ class TeamController extends Controller
     public function teamName(Request $request)
     {
         $name = $request->name;
-        $result = Teams::where('name', $name)->get();
+        $result = Teams::where('name', 'like', '%' . $name . '%')->get();
 
         return response()->json($result);
     }
     public function teamConfederation(Request $request)
     {
         $confederation = $request->confederation;
-        $result = Teams::where('confederation', $confederation)->get();
+        $result = Teams::where('confederation', 'like', '%' . $confederation . '%')->get();
 
         return response()->json($result);
     }
@@ -37,10 +37,10 @@ class TeamController extends Controller
         try {
 
             $manager = $request->manager;
-            $result = Teams::where('manager', $manager)->get();
+            $result = Teams::where('manager', 'like', '%' . $manager . '%')->get();
             return response()->json($result);
         } catch (\Exception $err) {
-            return response()->json(['Error Message' => 'Entrenador no encontrado']);
+            return response()->json(['Error Message' => 'Entrenador no encontrado'], 400);
         }
     }
 }

@@ -1,14 +1,5 @@
 version: "3"
 services:
-  web:
-    build:
-      context: ./stats_app_bd
-      dockerfile: Dockerfile
-    ports:
-      - 8000:8000
-    volumes:
-      - ./:/app
-
   stats_database:
     image: mysql:latest # use latest version of mysql
 
