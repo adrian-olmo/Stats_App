@@ -7,7 +7,7 @@ export const PopupSignup = () => {
 
     const goToLoginHandler = () => {
         console.log("Redireccionando a login");
-        /* history.push('/login'); */
+        history.push('/login');
     }
 
     return (

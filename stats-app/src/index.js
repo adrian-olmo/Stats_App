@@ -8,8 +8,7 @@ import SignUp from './containers/signup/Signup';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Login /> */}
-    <SignUp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
