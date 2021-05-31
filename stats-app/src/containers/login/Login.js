@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react"
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,6 +7,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from "react-router-dom"
+import { fetchLogin } from "../../services/fetchLogin";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -29,7 +31,39 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function Login() {
+
     const classes = useStyles();
+
+    let history = useHistory();
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [message, setMessage] = useState(null)
+    const [validation, setValidation] = useState(false)
+
+    const getEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const getPassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const loginHandler = async (e) => {
+        e.preventDefault()
+        if (email && password) {
+
+            try {
+                const loginUser = await fetchLogin(email, password)
+                console.log(loginUser);
+
+            } catch (error) {
+                setMessage('Algo no salio como se esperaba')
+            }
+
+        } else {
+            setMessage('Algo no salio como se esperaba')
+        }
+    }
 
     return (
         <Container component="main" maxWidth="xs">
