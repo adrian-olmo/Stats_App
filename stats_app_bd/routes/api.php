@@ -1,16 +1,17 @@
-<?php
+ <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CompetitionController;
-use App\Http\Controllers\PlayerController;
-use App\Http\Controllers\PositionController;
-use App\Http\Controllers\TeamController;
-use App\Http\Controllers\MatchController;
-use App\Models\Players;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\CompetitionController;
+    use App\Http\Controllers\PlayerController;
+    use App\Http\Controllers\PositionController;
+    use App\Http\Controllers\TeamController;
+    use App\Http\Controllers\MatchController;
+    use App\Http\Controllers\UserController;
+    use App\Models\Players;
 
-/*
+    /*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -21,105 +22,114 @@ use App\Models\Players;
 |
 */
 
-Route::group(
-    [
-        'prefix' => 'auth'
-    ],
-    function () {
-        Route::post('login', [AuthController::class, 'login']);
-        Route::post('signup', [AuthController::class, 'signUp']);
-        Route::group(
-            [
-                'middleware' => 'auth:api'
-            ],
-            function () {
-                Route::get('logout', [AuthController::class, 'logout']);
-            }
-        );
-    }
-);
+    Route::group(
+        [
+            'prefix' => 'auth'
+        ],
+        function () {
+            Route::post('login', [AuthController::class, 'login']);
+            Route::post('signup', [AuthController::class, 'signUp']);
+            Route::group(
+                [
+                    'middleware' => 'auth:api'
+                ],
+                function () {
+                    Route::get('logout', [AuthController::class, 'logout']);
+                }
+            );
+        }
+    );
 
-Route::group(
-    [
-        'prefix' => 'teams',
-        'middleware' => 'auth:api'
-    ],
-    function () {
-        Route::get('/', [TeamController::class, 'index']);
-        Route::get('/team', [TeamController::class, 'teamName']);
-        Route::get('/confederation', [TeamController::class, 'teamConfederation']);
-        Route::get('/manager', [TeamController::class, 'teamManager']);
-    }
-);
+    Route::group(
+        [
+            'prefix' => 'teams',
+            'middleware' => 'auth:api'
+        ],
+        function () {
+            Route::get('/', [TeamController::class, 'index']);
+            Route::get('/team', [TeamController::class, 'teamName']);
+            Route::get('/confederation', [TeamController::class, 'teamConfederation']);
+            Route::get('/manager', [TeamController::class, 'teamManager']);
+        }
+    );
 
-Route::group(
-    [
-        'prefix' => 'positions',
-        'middleware' => 'auth:api'
-    ],
-    function () {
-        Route::get('/', [PositionController::class, 'index']);
-        Route::get('/position', [PositionController::class, 'positionName']);
-    }
-);
-Route::group(
-    [
-        'prefix' => 'players',
-        'middleware' => 'auth:api'
-    ],
-    function () {
-        Route::get('/', [PlayerController::class, 'index']);
-        Route::get('/player', [PlayerController::class, 'playerName']);
-        Route::get('/player-position', [PlayerController::class, 'playerPosition']);
-        Route::get('/player-team', [PlayerController::class, 'playerTeam']);
-        Route::get('/debut', [PlayerController::class, 'playerDebut']);
-    }
-);
-Route::group(
-    [
-        'prefix' => 'competitions',
-        'middleware' => 'auth:api'
-    ],
-    function () {
-        Route::get('/', [CompetitionController::class, 'index']);
-        Route::get('/competition', [CompetitionController::class, 'competitionName']);
-        Route::get('/type', [CompetitionController::class, 'competitionType']);
-    }
-);
+    Route::group(
+        [
+            'prefix' => 'positions',
+            'middleware' => 'auth:api'
+        ],
+        function () {
+            Route::get('/', [PositionController::class, 'index']);
+            Route::get('/position', [PositionController::class, 'positionName']);
+        }
+    );
+    Route::group(
+        [
+            'prefix' => 'players',
+            'middleware' => 'auth:api'
+        ],
+        function () {
+            Route::get('/', [PlayerController::class, 'index']);
+            Route::get('/player', [PlayerController::class, 'playerName']);
+            Route::get('/player-position', [PlayerController::class, 'playerPosition']);
+            Route::get('/player-team', [PlayerController::class, 'playerTeam']);
+            Route::get('/debut', [PlayerController::class, 'playerDebut']);
+        }
+    );
+    Route::group(
+        [
+            'prefix' => 'competitions',
+            'middleware' => 'auth:api'
+        ],
+        function () {
+            Route::get('/', [CompetitionController::class, 'index']);
+            Route::get('/competition', [CompetitionController::class, 'competitionName']);
+            Route::get('/type', [CompetitionController::class, 'competitionType']);
+        }
+    );
 
-Route::group(
-    [
-        'prefix' => 'admin',
-        'middleware' => ['auth:api', 'scope:admin']
-    ],
-    function () {
-        Route::post('/new-player', [PlayerController::class, 'storePlayer']);
-        Route::patch('/player/{id}', [PlayerController::class, 'updatePlayer']);
-        Route::delete('/player/{id}', [PlayerController::class, 'destroyPlayer']);
-        Route::post('/new-team', [TeamController::class, 'storeTeam']);
-        Route::patch('/team/{id}', [TeamController::class, 'updateTeam']);
-        Route::delete('/team/{id}', [TeamController::class, 'updateTeam']);
-    }
-);
+    Route::group(
+        [
+            'prefix' => 'admin',
+            'middleware' => ['auth:api', 'scope:admin']
+        ],
+        function () {
+            Route::post('/new-player', [PlayerController::class, 'storePlayer']);
+            Route::patch('/player/{id}', [PlayerController::class, 'updatePlayer']);
+            Route::delete('/player/{id}', [PlayerController::class, 'destroyPlayer']);
+            Route::post('/new-team', [TeamController::class, 'storeTeam']);
+            Route::patch('/team/{id}', [TeamController::class, 'updateTeam']);
+            Route::delete('/team/{id}', [TeamController::class, 'destroyTeam']);
+        }
+    );
+    Route::group(
+        [
+            'prefix' => 'user',
+            'middleware' => 'auth:api'
+        ],
+        function () {
+            Route::patch('/profile/{id}', [UserController::class, 'update']);
+        }
+    );
 
-Route::group(
-    [
-        'prefix' => 'matches',
-        'middleware' => 'auth:api'
-    ],
-    function () {
-        Route::get('/', [MatchController::class, 'index']);
+    Route::group(
+        [
+            'prefix' => 'matches',
+            'middleware' => 'auth:api'
+        ],
+        function () {
+            Route::get('/', [MatchController::class, 'index']);
 
-        Route::group(
-            [
-                'middleware' => 'scope:admin'
-            ],
-            function () {
-                Route::post('/', [MatchController::class, 'store']);
-                Route::patch('/{id}', [MatchController::class, 'update']);
-                Route::delete('/{id}', [MatchController::class, 'destroy']);
-            }
-        );
-    }
+            Route::group(
+                [
+                    'middleware' => 'scope:admin'
+                ],
+                function () {
+                    Route::post('/new-match', [MatchController::class, 'store']);
+                    Route::patch('/{id}', [MatchController::class, 'update']);
+                    Route::delete('/{id}', [MatchController::class, 'destroy']);
+                }
+            );
+        }
 
-);
+    );

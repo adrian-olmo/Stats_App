@@ -13,9 +13,14 @@ class Matches extends Model
     protected $fillable = ['local_team', 'visitor_team', 'stadium', 'date', 'status', 'competition_id'];
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function team()
+    public function visitorTeam()
     {
-        return $this->hasMany(Teams::class, 'team_id');
+        return $this->hasMany(Teams::class, 'visitor_team');
+    }
+
+    public function localTeam()
+    {
+        return $this->hasMany(Teams::class, 'local_team');
     }
 
     public function competition()

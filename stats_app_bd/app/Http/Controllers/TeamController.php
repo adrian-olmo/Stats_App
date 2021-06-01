@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Players;
 use App\Models\Teams;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -79,7 +80,11 @@ class TeamController extends Controller
         return response()->json(['message' => "Update Succesfully"], 200);
     }
 
-    public function destroyTeam(Request $request)
+    public function destroyTeam($id)
     {
+        $teamId = $id;
+        Players::where('team_id', $teamId)->delete();
+        $result = Teams::destroy($teamId);
+        return response()->json(['message' => "Delete Succefuly"], 202);
     }
 }

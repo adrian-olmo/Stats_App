@@ -24,8 +24,12 @@ class Teams extends Model
         return $this->belongsToMany(Competitions::class, 'teams_competitions');
     }
 
-    public function match()
+    public function matchLocal()
     {
-        return $this->belongsTo(Matches::class, 'team_id');
+        return $this->belongsTo(Matches::class, 'local_team');
+    }
+    public function matchVisitante()
+    {
+        return $this->belongsTo(Matches::class, 'visitor_team');
     }
 }
