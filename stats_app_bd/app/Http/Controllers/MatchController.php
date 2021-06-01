@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Matches;
 
+use App\Models\Players;
+
+
 class MatchController extends Controller
 {
     /**
@@ -14,6 +17,14 @@ class MatchController extends Controller
      */
     public function index()
     {
+
+        $data = Matches::select('matches.*', 'L.name as Local', 'V.name as Visitante')
+            ->join('teams as L', 'matches.local_team', 'L.id')
+            ->join('teams as V', 'matches.visitor_team', 'V.id')
+            ->get();
+
+        return response()->json(['matches' => $data], 201);
+
     }
 
     /**
@@ -24,7 +35,10 @@ class MatchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newMatch = Matches::create($data);
+        return response()->json(['new match' => $newMatch], 201);
+
     }
 
     /**
