@@ -7,6 +7,7 @@ use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\MatchController;
 use App\Models\Players;
 
 /*
@@ -92,7 +93,33 @@ Route::group(
         'middleware' => ['auth:api', 'scope:admin']
     ],
     function () {
-        Route::post('/new-player', [PlayerController::class, 'createPlayer']);
-        Route::post('/new-team', [TeamController::class, 'createTeam']);
+        Route::post('/new-player', [PlayerController::class, 'storePlayer']);
+        Route::patch('/player/{id}', [PlayerController::class, 'updatePlayer']);
+        Route::delete('/player/{id}', [PlayerController::class, 'destroyPlayer']);
+        Route::post('/new-team', [TeamController::class, 'storeTeam']);
+        Route::patch('/team/{id}', [TeamController::class, 'updateTeam']);
+        Route::delete('/team/{id}', [TeamController::class, 'updateTeam']);
     }
+);
+
+Route::group(
+    [
+        'prefix' => 'matches',
+        'middleware' => 'auth:api'
+    ],
+    function () {
+        Route::get('/', [MatchController::class, 'index']);
+
+        Route::group(
+            [
+                'middleware' => 'scope:admin'
+            ],
+            function () {
+                Route::post('/', [MatchController::class, 'store']);
+                Route::patch('/{id}', [MatchController::class, 'update']);
+                Route::delete('/{id}', [MatchController::class, 'destroy']);
+            }
+        );
+    }
+
 );
