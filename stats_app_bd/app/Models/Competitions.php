@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Teams;
+use App\Models\Matches;
 
 class Competitions extends Model
 {
@@ -15,5 +16,10 @@ class Competitions extends Model
     public function team()
     {
         return $this->belongsToMany(Teams::class, 'teams_competitions');
+    }
+
+    public function match()
+    {
+        return $this->belongsTo(Matches::class, 'competition_id');
     }
 }

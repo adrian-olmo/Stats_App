@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Players;
 use App\Models\Competitions;
+use App\Models\Matches;
 
 class Teams extends Model
 {
@@ -21,5 +22,10 @@ class Teams extends Model
     public function competition()
     {
         return $this->belongsToMany(Competitions::class, 'teams_competitions');
+    }
+
+    public function match()
+    {
+        return $this->belongsTo(Matches::class, 'team_id');
     }
 }
