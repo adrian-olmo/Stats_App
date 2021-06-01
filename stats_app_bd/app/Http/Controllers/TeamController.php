@@ -43,4 +43,11 @@ class TeamController extends Controller
             return response()->json(['Error Message' => 'Entrenador no encontrado'], 400);
         }
     }
+
+    public function createTeam(Request $request)
+    {
+        $data = $request->all();
+        $newTeam = Teams::create($data);
+        return response()->json(['new team' => $newTeam], 201);
+    }
 }

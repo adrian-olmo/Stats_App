@@ -71,4 +71,11 @@ class PlayerController extends Controller
             ->get();
         return response()->json($result);
     }
+
+    public function createPlayer(Request $request)
+    {
+        $data = $request->all();
+        $newPlayer = Players::create($data);
+        return response()->json(['new player' => $newPlayer], 201);
+    }
 }

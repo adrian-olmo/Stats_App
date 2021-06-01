@@ -85,3 +85,14 @@ Route::group(
         Route::get('/type', [CompetitionController::class, 'competitionType']);
     }
 );
+
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => ['auth:api', 'scope:admin']
+    ],
+    function () {
+        Route::post('/new-player', [PlayerController::class, 'createPlayer']);
+        Route::post('/new-team', [TeamController::class, 'createTeam']);
+    }
+);
