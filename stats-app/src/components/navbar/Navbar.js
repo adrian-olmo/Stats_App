@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import './Navbar.scss'
+import { Link } from "react-router-dom";
 
 export class Navbar extends React.Component {
 
 
     render() {
         return (
-            <div class='container'>
+            <div className='container'>
                 <div id="navigation-bar">
                     <nav>
                         <ul>
-                            <li><a href="#" id="logo">LOGO</a></li>
-                            <li><a href='#'>Home</a></li>
-                            <li><a href='#'>About</a></li>
-                            <li><a href='#'>Portfolio</a></li>
-                            <li><a href='#'>Services</a></li>
-                            <li><a href='#'>Contact</a></li>
-                            <a href="#" id="menu-icon"></a>
+                            <li><Link to='/'>Home</Link></li>
+                            <li><Link to='/login'>Login</Link></li>
+                            <li><Link to='/signup'>Registro</Link></li>
                         </ul>
                     </nav>
                 </div>

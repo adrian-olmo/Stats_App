@@ -41,7 +41,7 @@ Route::group(
 Route::group(
     [
         'prefix' => 'teams',
-        'middleware' => 'auth:api'
+        /* 'middleware' => 'auth:api' */
     ],
     function () {
         Route::get('/', [TeamController::class, 'index']);
