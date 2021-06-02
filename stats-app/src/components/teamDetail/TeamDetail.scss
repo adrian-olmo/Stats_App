@@ -1,12 +1,122 @@
-.pepe {
+.container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+
+  .team-card {
+    display: flex;
+    justify-content: left;
+    position: relative;
+    overflow: hidden;
+    width: 60%;
+    height: auto;
+    margin: 50px auto;
+    background-color: var(--posy);
+    border: 5px solid var(--jewel);
+    border-radius: 7.5px;
+
+    .team-image {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      justify-content: center;
+      margin-top: auto;
+
+      .team-image img {
+        width: auto;
+        height: 100%;
+        justify-content: cec;
+      }
+    }
+    .team-data {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      width: 50%;
+
+      .title-content {
+        position: relative;
+        width: auto;
+        height: auto;
+        margin-left: 0.5em;
+        font-size: 20px;
+        text-align: center;
+        font-weight: 100;
+        color: black;
+        font-weight: 700;
+      }
+      .title-data {
+        position: relative;
+        width: auto;
+        height: auto;
+        margin-left: 0.5em;
+        font-size: 20px;
+        text-align: center;
+        font-weight: 100;
+        color: white;
+      }
+    }
+  }
+
+  .player-card {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    width: 60%;
+    height: auto;
+    margin: 50px auto;
+    background-color: var(--posy);
+    border: 5px solid var(--jewel);
+    border-radius: 7.5px;
+    .player-content {
+      position: relative;
+      flex-direction: row;
+      width: auto;
+      height: auto;
+      margin-left: 1em;
+      font-size: 20px;
+      text-align: center;
+      font-weight: 100;
+    }
+    .title {
+      margin-left: 2em;
+      font-weight: 700;
+    }
+    .data {
+      margin-left: 2em;
+    }
+  }
 }
 
-@media (min-width: 720px) {
-  .navbar-header {
-    position: fixed;
-    z-index: 99;
+@media (max-width: 1024px) {
+  .card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .poster-detail > img {
+    width: 100%;
+    height: 1000%;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .team.image > img {
+    width: auto;
+    height: auto;
+  }
+
+  .team-data {
+    width: auto;
+    height: auto;
   }
 }

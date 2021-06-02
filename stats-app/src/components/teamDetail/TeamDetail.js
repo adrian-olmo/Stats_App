@@ -13,13 +13,11 @@ export const TeamDetail = (props) => {
     const getDetail = async () => {
         const result = await fetchDetail(id)
         setDetail(result)
-        console.log(result);
     }
 
     const getPlayer = async () => {
         const players = await fetchPlayer(id)
         setPlayer(players);
-        console.log(players);
     }
 
 
@@ -29,11 +27,56 @@ export const TeamDetail = (props) => {
     }, [])
 
     return (
-        <>
-            <div className='pepe'>
-                <h2><strong>{detail.name}</strong></h2>
-                <h2><strong>{detail.confederation}</strong></h2>
+        <div className='container'>
+            <div className='team-card'>
+                <div className='team-image'>
+                    <img src={detail.logo} />
+                </div>
+
+                <div className='team-data'>
+                    <div className="title-content">
+                        <p>Equipo: </p>
+                        <p>Manager: </p>
+                        <p>Ranking Fifa:</p>
+                        <p>Confederacion:</p>
+                        <p>Titulos Internacionales:</p>
+                    </div>
+                    <div className="title-data">
+                        <p>{detail.name} </p>
+                        <p>{detail.manager} </p>
+                        <p>#{detail.fifa_rank} </p>
+                        <p>{detail.confederation}</p>
+                        <p>{detail.total_titles}</p>
+                    </div>
+                </div>
             </div>
-        </>
+
+            <h2><strong>Plantilla: </strong></h2>
+            {player.map(jugador =>
+                <div className='player-card'>
+                    <div className='player-content'>
+                        <p className='title'>Jugador </p>
+                        <p className='data'>{jugador.name}</p>
+                    </div>
+
+                    <div className='player-content'>
+                        <p className='title'>Edad </p>
+                        <p className='data'>{jugador.age} </p>
+                    </div>
+                    <div className='player-content'>
+                        <p className='title'>Partidos Seleccion </p>
+                        <p className='data'>{jugador.matches}</p>
+                    </div>
+                    <div className='player-content'>
+                        <p className='title'>Debut </p>
+                        <p className='data'>{jugador.debut} </p>
+                    </div>
+                    <div className='player-content'>
+                        <p className='title'>Posicion </p>
+                        <p className='data'>{jugador.position} </p>
+                    </div>
+                </div>)}
+        </div>
+
     )
 }
