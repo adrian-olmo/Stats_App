@@ -51,6 +51,7 @@ Route::group(
         Route::get('/manager', [TeamController::class, 'teamManager']);
     }
 );
+//Rutas posiciones
 
 Route::group(
     [
@@ -62,6 +63,8 @@ Route::group(
         Route::get('/position', [PositionController::class, 'positionName']);
     }
 );
+
+//Rutas jugadores
 Route::group(
     [
         'prefix' => 'players',
@@ -75,6 +78,8 @@ Route::group(
         Route::get('/debut', [PlayerController::class, 'playerDebut']);
     }
 );
+
+//Rutas competiciones
 Route::group(
     [
         'prefix' => 'competitions',

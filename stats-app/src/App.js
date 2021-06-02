@@ -7,7 +7,7 @@ import { SignUp } from './containers/signup/Signup';
 import { Login } from './containers/login/Login';
 import { Navbar } from './components/navbar/Navbar';
 import { Teams } from './containers/teams/Teams';
-import { Footer } from './components/footer/Footer';
+/* import { Footer } from './components/footer/Footer'; */
 import { Gallery } from "./components/gallery/Gallery";
 import { TeamDetail } from "./components/teamDetail/TeamDetail";
 
