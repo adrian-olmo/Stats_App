@@ -52,13 +52,14 @@ class PlayerController extends Controller
         return response()->json($result);
     }
 
-    public function playerTeam(Request $request)
+    public function playerTeam($id)
     {
-        $playerTeam = $request->playerTeam;
+        $playerTeam = $id;
 
-        $result = Players::select('players.*', 'teams.name as team')
+        $result = Players::select('players.*', 'teams.name as team', 'positions.name as position')
             ->join('teams', 'players.team_id', 'teams.id')
-            ->where('teams.name', 'like', '%' . $playerTeam . '%')
+            ->join('positions', 'players.position_id', 'positions.id')
+            ->where('teams.id', $playerTeam)
             ->get();
         return response()->json($result);
     }

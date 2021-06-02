@@ -39,7 +39,6 @@
             );
         }
     );
-
     Route::group(
         [
             'prefix' => 'teams',
@@ -47,6 +46,7 @@
         ],
         function () {
             Route::get('/', [TeamController::class, 'index']);
+            Route::get('/{id}', [TeamController::class, 'show']);
             Route::get('/team', [TeamController::class, 'teamName']);
             Route::get('/confederation', [TeamController::class, 'teamConfederation']);
             Route::get('/manager', [TeamController::class, 'teamManager']);
@@ -72,7 +72,7 @@
             Route::get('/', [PlayerController::class, 'index']);
             Route::get('/player', [PlayerController::class, 'playerName']);
             Route::get('/player-position', [PlayerController::class, 'playerPosition']);
-            Route::get('/player-team', [PlayerController::class, 'playerTeam']);
+            Route::get('/player-team/{id}', [PlayerController::class, 'playerTeam']);
             Route::get('/debut', [PlayerController::class, 'playerDebut']);
         }
     );
