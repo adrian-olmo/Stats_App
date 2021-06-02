@@ -1,7 +1,7 @@
 import "./Gallery.scss"
 
 //Images
-import Photo01 from "../../utils/01.png"
+/* import Photo01 from "../../utils/01.png"
 import Photo02 from "../../utils/02.png"
 import Photo03 from "../../utils/03.jpg"
 import Photo04 from "../../utils/04.png"
@@ -9,14 +9,19 @@ import Photo05 from "../../utils/05.png"
 import Photo06 from "../../utils/06.png"
 import Photo07 from "../../utils/07.png"
 import Photo08 from "../../utils/08.png"
-import Photo09 from "../../utils/09.png"
+import Photo09 from "../../utils/09.png" */
+
 
 
 export function Gallery() {
 
+    
+
+
+
     return (
         <>
-            <div class="container-all">
+            {/* <div class="container-all">
                 <div class="slide">
 
                     <div class="item-slide">
@@ -51,7 +56,11 @@ export function Gallery() {
 
                 </div>
 
-            </div>
+            </div> */}
+            <p>HOME</p>
+            <p>HOME</p>
+            <p>HOME</p>
+            <p>HOME</p>
         </>
     )
 

@@ -11,6 +11,8 @@ import { Footer } from './components/footer/Footer';
 import { Gallery } from "./components/gallery/Gallery";
 
 function App() {
+
+ 
   return (
     <div className="App">
       <BrowserRouter>

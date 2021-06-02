@@ -18,12 +18,11 @@ export const CardTeam = (props) => {
             <div className='card-team'>
                 <div className='team-img'>
                     <img src={props.logo} />
-                    <p>Imagen</p>
                 </div>
-                <p>HOLA</p>
-                <p>MUNDO</p>
+                <p>{props.name}</p>
+                <p>{props.confederation}</p>
 
-                <button className='button button-card'></button>
+                <button className='button button-card'>Ver Mas</button>
             </div>
         </div>
     )

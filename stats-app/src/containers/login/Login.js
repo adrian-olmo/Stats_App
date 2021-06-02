@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom"
 import { fetchLogin } from "../../services/fetchLogin";
+import { Message } from "../../components/message/Message";
+import { useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -39,6 +41,7 @@ export function Login() {
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState(null)
     const [validation, setValidation] = useState(false)
+    const [cookies, setCookies] = useCookies(null)
 
     const getEmail = (e) => {
         setEmail(e.target.value)
@@ -53,8 +56,12 @@ export function Login() {
         if (email && password) {
 
             try {
-                const loginUser = await fetchLogin(email, password)
-                console.log(loginUser);
+                const loginUser = await fetchLogin(email, password);
+                console.log(1);
+                /* setCookies('session', loginUser.access_token, { path: '/' }); */
+                localStorage.setItem('session', loginUser.access_token);
+                console.log(2);
+                history.push('/')
 
             } catch (error) {
                 setMessage('Algo no salio como se esperaba')
@@ -72,14 +79,16 @@ export function Login() {
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5"> Inicio Sesion </Typography>
+                <Typography component="h1" variant="h5" > Inicio Sesion </Typography>
 
                 <form className={classes.form} noValidate>
-                    <TextField variant="outlined" required fullWidth label="Email" autoComplete="email" />
-                    <TextField variant="outlined" required fullWidth label="Password" type="password" />
+                    <TextField variant="outlined" required fullWidth label="Email" autoComplete="email" onInput={e => getEmail(e)} />
+                    <TextField variant="outlined" required fullWidth label="Password" type="password" onInput={e => getPassword(e)} />
 
-                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}> Iniciar Sesion</Button>
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}
+                        onClick={loginHandler}> Iniciar Sesion</Button>
 
+                    <Message msg={message} />
                 </form>
             </div>
 

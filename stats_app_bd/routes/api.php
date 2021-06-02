@@ -45,6 +45,7 @@ Route::group(
     ],
     function () {
         Route::get('/', [TeamController::class, 'index']);
+        Route::get('/{id}', [TeamController::class, 'show']);
         Route::get('/team', [TeamController::class, 'teamName']);
         Route::get('/confederation', [TeamController::class, 'teamConfederation']);
         Route::get('/manager', [TeamController::class, 'teamManager']);

@@ -7,6 +7,7 @@ import { CardTeam } from '../../components/cardTeam/CardTeam';
 export const Teams = () => {
 
     const [teams, setTeams] = useState(null);
+    const token = localStorage.getItem('session');
     let history = useHistory();
 
     useEffect(() => {
@@ -16,18 +17,16 @@ export const Teams = () => {
     const getTeams = async () => {
         try {
             const res = await fetchTeams();
-            const json = await res.json();
-            const { rows } = json;
 
-            if (rows) {
-                setTeams(rows)
+            if (res) {
+                setTeams(res)
             }
 
         } catch (error) {
             console.log(error);
         }
     }
-
+    console.log(teams);
 
     return (
         <div className="app-body">

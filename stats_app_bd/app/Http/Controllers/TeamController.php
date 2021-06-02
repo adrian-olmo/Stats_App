@@ -43,4 +43,10 @@ class TeamController extends Controller
             return response()->json(['Error Message' => 'Entrenador no encontrado'], 400);
         }
     }
+
+    public function show($id)
+    {
+        $team = Teams::find($id);
+        return response()->json($team, 200);
+    }
 }

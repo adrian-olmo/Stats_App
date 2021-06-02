@@ -1,9 +1,9 @@
 export const fetchLogin = async (email, password) => {
 
     try {
-        const urlLogin = 'http://localhost:8000/login'
+        const urlLogin = 'http://localhost:8000/api/auth/login'
 
-        const result = await fetch(urlLogin, {
+        let result = await fetch(urlLogin, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -12,9 +12,10 @@ export const fetchLogin = async (email, password) => {
             })
         })
 
+        result = result.json();
         return result;
 
     } catch (error) {
-        return error
+        console.log(error);
     }
 }
