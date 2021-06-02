@@ -6,11 +6,11 @@ import "./CardTeam.scss";
 export const CardTeam = (props) => {
 
     let [team, setTeam] = useState(null);
-    let history = useHistory;
+    let history = useHistory();
 
     const handlerId = async () => {
         setTeam(props.id);
-        history.push(`/team/${props.id}`);
+        history.push(`/detail/${props.id}`);
     }
 
     return (
@@ -22,8 +22,8 @@ export const CardTeam = (props) => {
                 <p>{props.name}</p>
                 <p>{props.confederation}</p>
 
-                <button className='button button-card'>Ver Mas</button>
+                <button className='button button-card' onClick={() => handlerId()}>Ver Mas</button>
             </div>
-        </div>
+        </div >
     )
 }

@@ -26,7 +26,6 @@ export const Teams = () => {
             console.log(error);
         }
     }
-    console.log(teams);
 
     return (
         <div className="app-body">

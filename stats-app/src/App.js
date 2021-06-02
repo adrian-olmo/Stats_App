@@ -9,10 +9,11 @@ import { Navbar } from './components/navbar/Navbar';
 import { Teams } from './containers/teams/Teams';
 import { Footer } from './components/footer/Footer';
 import { Gallery } from "./components/gallery/Gallery";
+import { TeamDetail } from "./components/teamDetail/TeamDetail";
 
 function App() {
 
- 
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/teams" component={Teams} />
+          <Route path="/detail/:id" component={TeamDetail} />
 
         </Switch>
 

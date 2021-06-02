@@ -1,28 +1,20 @@
 import React, { Component, useEffect, useState } from "react";
-import './Navbar.scss'
+import './Navbar.css'
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 
-
-
     return (
-        <div className='container'>
-            <div id="navigation-bar">
-                <nav>
-                    <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
-                        <li><Link to='/signup'>Registro</Link></li>
-                        <li><Link to='/teams'>Teams</Link></li>
-                    </ul>
+
+        <header className='header' >
+            <div className='navbar-header'>
+                <nav className='navbar'>
+                    <button className="button header-button">Registrarse</button>
+                    <button className="button header-button">Iniciar sesión</button>
+                    <button className="button header-button">Cerrar sesión</button>
                 </nav>
             </div>
-        </div>
 
-
-
+        </header >
     )
-
-
 }

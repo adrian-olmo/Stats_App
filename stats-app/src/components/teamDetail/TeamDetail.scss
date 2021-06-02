@@ -1,0 +1,12 @@
+.pepe {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+@media (min-width: 720px) {
+  .navbar-header {
+    position: fixed;
+    z-index: 99;
+  }
+}
