@@ -71,7 +71,7 @@ Route::group(
         Route::get('/', [PlayerController::class, 'index']);
         Route::get('/player', [PlayerController::class, 'playerName']);
         Route::get('/player-position', [PlayerController::class, 'playerPosition']);
-        Route::get('/player-team', [PlayerController::class, 'playerTeam']);
+        Route::get('/player-team/{id}', [PlayerController::class, 'playerTeam']);
         Route::get('/debut', [PlayerController::class, 'playerDebut']);
     }
 );
