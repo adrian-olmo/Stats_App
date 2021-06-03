@@ -41,7 +41,7 @@ Route::group(
 Route::group(
     [
         'prefix' => 'teams',
-        /* 'middleware' => 'auth:api' */
+        'middleware' => 'auth:api'
     ],
     function () {
         Route::get('/', [TeamController::class, 'index']);
@@ -51,8 +51,9 @@ Route::group(
         Route::get('/manager', [TeamController::class, 'teamManager']);
     }
 );
-//Rutas posiciones
 
+
+//Rutas posiciones
 Route::group(
     [
         'prefix' => 'positions',
@@ -89,5 +90,21 @@ Route::group(
         Route::get('/', [CompetitionController::class, 'index']);
         Route::get('/competition', [CompetitionController::class, 'competitionName']);
         Route::get('/type', [CompetitionController::class, 'competitionType']);
+    }
+);
+
+//Rutas admin
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => ['auth:api', 'scope:admin']
+    ],
+    function () {
+        Route::post('/new-team', [TeamController::class, 'store']);
+        Route::patch('/team/{id}', [TeamController::class, 'update']);
+        Route::delete('/team/{id}', [TeamController::class, 'destroy']);
+        Route::post('/new-player', [PlayerController::class, 'store']);
+        Route::patch('/player/{id}', [PlayerController::class, 'update']);
+        Route::delete('/player/{id}', [PlayerController::class, 'destroy']);
     }
 );
