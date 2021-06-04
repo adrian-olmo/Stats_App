@@ -4,6 +4,7 @@ import './UpdateTeam.scss';
 import { fetchDetail } from "../../services/fetchDetail";
 import { FormTeam } from "../../components/formTeam/FormTeam";
 import { fetchUpdateTeam } from '../../services/fetchUpdateTeam';
+import { Loading } from '../../components/loading/Loading';
 
 export const UpdateTeam = () => {
 
@@ -33,7 +34,7 @@ export const UpdateTeam = () => {
             }
 
             {!detail &&
-                <span>Cargando ...</span>
+                <Loading></Loading>
             }
         </div>
     )

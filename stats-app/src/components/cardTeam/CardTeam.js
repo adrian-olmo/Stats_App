@@ -24,6 +24,7 @@ export const CardTeam = (props) => {
                 <div className='team-img'>
                     <img src={props.logo} />
                 </div>
+
                 <p>{props.name}</p>
                 <p>{props.confederation}</p>
 

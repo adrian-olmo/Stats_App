@@ -1,8 +1,8 @@
 export const fetchDetail = async (id) => {
 
     try {
-        const urlTeam = `http://localhost:8000/api/teams/${id}`
-        let result = await fetch(urlTeam, {
+        const urlTeamDetail = `http://localhost:8000/api/teams/${id}`
+        let result = await fetch(urlTeamDetail, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

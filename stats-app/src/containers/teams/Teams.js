@@ -14,6 +14,10 @@ export const Teams = () => {
         getTeams();
     }, []);
 
+    const newTeam = () => {
+        history.push('/new-team')
+    }
+
     const getTeams = async () => {
         try {
             const res = await fetchTeams();
@@ -30,8 +34,10 @@ export const Teams = () => {
     return (
         <div className="app-body">
             <div className="display-teams">
-                <button type="">CREAR EQUIPO</button>
-                <h2><strong>Equipos</strong></h2>
+                <h2><strong>Listado de Equipos</strong></h2>
+                <button className="btn newTeam" onClick={newTeam}>CREAR EQUIPO</button>
+                <br />
+                <br />
                 {teams && <div className="display-teams-grid">
                     {teams.map(equipo => <CardTeam key={teams.indexOf(equipo)}
                         id={equipo.id}

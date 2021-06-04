@@ -1,7 +1,10 @@
+/* import dotenv from "dotenv";
+dotenv.congif(); */
+
 export const fetchSignup = async (name, email, password) => {
 
     try {
-        const urlSignup = process.env.SignUp
+        const urlSignup = 'http://localhost:8000/api/auth/signup'
 
         const result = await fetch(urlSignup, {
             method: 'POST',

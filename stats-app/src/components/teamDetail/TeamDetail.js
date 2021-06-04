@@ -27,6 +27,7 @@ export const TeamDetail = (props) => {
     }, [])
 
     return (
+
         <div className='container'>
             <div className='team-card'>
                 <div className='team-image'>
@@ -52,6 +53,10 @@ export const TeamDetail = (props) => {
             </div>
 
             <h2><strong>Plantilla: </strong></h2>
+            <div className='btn-container'>
+                <p className='btn createPlayer'>Inroducir Jugador</p>
+                <p className='btn updatePlayer'>Actualizar Jugador</p>
+            </div>
             {player.map(jugador =>
                 <div className='player-card'>
                     <div className='player-content'>
