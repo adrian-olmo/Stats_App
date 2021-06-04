@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 export const fetchSignup = async (name, email, password) => {
 
     try {

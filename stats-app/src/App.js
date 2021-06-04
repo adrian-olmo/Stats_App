@@ -10,9 +10,11 @@ import { Teams } from './containers/teams/Teams';
 import { Footer } from './components/footer/Footer';
 import { Gallery } from "./components/gallery/Gallery";
 import { TeamDetail } from "./components/teamDetail/TeamDetail";
+import { FormTeam } from './components/formTeam/FormTeam';
+import { UpdateTeam } from './containers/updateTeam/UpdateTeam';
+import { CreateTeam } from './containers/createTeam/CreateTeam';
 
 function App() {
-
 
   return (
     <div className="App">
@@ -25,6 +27,8 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/teams" component={Teams} />
           <Route path="/detail/:id" component={TeamDetail} />
+          <Route path="/change-team/:id" component={UpdateTeam} />
+          <Route path="/new-team" component={CreateTeam} />
 
         </Switch>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Players;
 use App\Models\Teams;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
@@ -27,29 +28,50 @@ class TeamController extends Controller
 
     public function update(Request $request, $id)
     {
-        $team = Teams::findOrFail($id);
 
-        if ($request->has('name')) {
-            $team->name = $request->name;
-        }
-        if ($request->has('confederation')) {
-            $team->confederation = $request->confederation;
-        }
-        if ($request->has('manager')) {
-            $team->manager = $request->manager;
-        }
-        if ($request->has('fifa_rank')) {
-            $team->fifa_rank = $request->fifa_rank;
-        }
-        if ($request->has('total_titles')) {
-            $team->total_titles = $request->total_titles;
-        }
-        if ($request->has('logo')) {
-            $team->logo = $request->logo;
-        }
+        /* $validator = Validator::make($request->all(), [
+            'name' => 'string',
+            'confederation' => 'string',
+            'manager' => 'string',
+            'fifa_rank' => 'integer',
+            'total_titles' => 'integer',
+            'logo' => 'string'
+        ]);
 
-        $team->save();
-        return response()->json(['message' => "Update Succefuly"], 205);
+        if ($validator->fails()) {
+            response()->json([
+                'created' => false,
+                'errors' => $validator->errors()->all()
+            ], 400);
+        } */
+
+        try {
+            $team = Teams::findOrFail($id);
+
+            if ($request->has('name')) {
+                $team->name = $request->name;
+            }
+            if ($request->has('confederation')) {
+                $team->confederation = $request->confederation;
+            }
+            if ($request->has('manager')) {
+                $team->manager = $request->manager;
+            }
+            if ($request->has('fifa_rank')) {
+                $team->fifa_rank = $request->fifa_rank;
+            }
+            if ($request->has('total_titles')) {
+                $team->total_titles = $request->total_titles;
+            }
+            if ($request->has('logo')) {
+                $team->logo = $request->logo;
+            }
+
+            $team->save();
+            return response()->json(['message' => "Update Succefuly"], 205);
+        } catch (\Exception $error) {
+            return response()->json($error, 409);
+        }
     }
 
     public function store(Request $request)

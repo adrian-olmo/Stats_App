@@ -57,10 +57,7 @@ export function Login() {
 
             try {
                 const loginUser = await fetchLogin(email, password);
-                console.log(1);
-                /* setCookies('session', loginUser.access_token, { path: '/' }); */
                 localStorage.setItem('session', loginUser.access_token);
-                console.log(2);
                 history.push('/')
 
             } catch (error) {

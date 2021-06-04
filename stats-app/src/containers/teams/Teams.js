@@ -30,6 +30,7 @@ export const Teams = () => {
     return (
         <div className="app-body">
             <div className="display-teams">
+                <button type="">CREAR EQUIPO</button>
                 <h2><strong>Equipos</strong></h2>
                 {teams && <div className="display-teams-grid">
                     {teams.map(equipo => <CardTeam key={teams.indexOf(equipo)}

@@ -13,6 +13,11 @@ export const CardTeam = (props) => {
         history.push(`/detail/${props.id}`);
     }
 
+    const handlerEdit = async () => {
+        setTeam(props.id);
+        history.push(`/change-team/${props.id}`);
+    }
+
     return (
         <div className='card-team-box'>
             <div className='card-team'>
@@ -23,6 +28,8 @@ export const CardTeam = (props) => {
                 <p>{props.confederation}</p>
 
                 <button className='button button-card' onClick={() => handlerId()}>Ver Mas</button>
+                <br></br>
+                <button className='button button-card' onClick={() => handlerEdit()}>Editar Equipo</button>
             </div>
         </div >
     )
