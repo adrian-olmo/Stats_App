@@ -1,6 +1,6 @@
 import "./TeamDetail.scss"
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { fetchDetail } from "../../services/fetchDetail";
 import { fetchPlayer } from "../../services/fetchPlayers";
 
@@ -9,6 +9,7 @@ export const TeamDetail = (props) => {
     let [detail, setDetail] = useState([])
     let [player, setPlayer] = useState([])
     let { id } = useParams();
+    let history = useHistory()
 
     const getDetail = async () => {
         const result = await fetchDetail(id)
@@ -18,6 +19,14 @@ export const TeamDetail = (props) => {
     const getPlayer = async () => {
         const players = await fetchPlayer(id)
         setPlayer(players);
+    }
+
+    const createPlayer = async () => {
+        history.push('/new-player')
+    }
+
+    const updatePlayer = async (id) => {
+        history.push(`/change-player/${id}`)
     }
 
 
@@ -54,14 +63,15 @@ export const TeamDetail = (props) => {
 
             <h2><strong>Plantilla: </strong></h2>
             <div className='btn-container'>
-                <p className='btn createPlayer'>Inroducir Jugador</p>
-                <p className='btn updatePlayer'>Actualizar Jugador</p>
+                <p className='btn createPlayer' onClick={createPlayer}>Inroducir Jugador</p>
+
             </div>
             {player.map(jugador =>
                 <div className='player-card'>
                     <div className='player-content'>
                         <p className='title'>Jugador </p>
                         <p className='data'>{jugador.name}</p>
+
                     </div>
 
                     <div className='player-content'>
@@ -71,6 +81,7 @@ export const TeamDetail = (props) => {
                     <div className='player-content'>
                         <p className='title'>Partidos Seleccion </p>
                         <p className='data'>{jugador.matches}</p>
+                        <p className='updatePlayer' onClick={updatePlayer}>Actualizar Datos Jugador</p>
                     </div>
                     <div className='player-content'>
                         <p className='title'>Debut </p>

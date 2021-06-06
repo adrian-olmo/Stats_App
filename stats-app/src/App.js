@@ -10,9 +10,11 @@ import { Teams } from './containers/teams/Teams';
 import { Footer } from './components/footer/Footer';
 import { Gallery } from "./components/gallery/Gallery";
 import { TeamDetail } from "./components/teamDetail/TeamDetail";
-import { FormTeam } from './components/formTeam/FormTeam';
+import { FormPlayer } from './components/formPlayer/FormPlayer';
 import { UpdateTeam } from './containers/updateTeam/UpdateTeam';
 import { CreateTeam } from './containers/createTeam/CreateTeam';
+import { CreatePlayer } from "./containers/createPlayer/CreatePlayer";
+import { UpdatePlayer } from './containers/updatePlayer/UpdatePlayer';
 
 function App() {
 
@@ -29,6 +31,9 @@ function App() {
           <Route path="/detail/:id" component={TeamDetail} />
           <Route path="/change-team/:id" component={UpdateTeam} />
           <Route path="/new-team" component={CreateTeam} />
+          <Route path="/new-player" component={CreatePlayer} />
+          <Route path="/change-player/:id" component={UpdatePlayer} />
+          <Route path="/matches" component={UpdatePlayer} />
 
         </Switch>
 

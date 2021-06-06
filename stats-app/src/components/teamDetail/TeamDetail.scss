@@ -82,13 +82,6 @@
         color: whitesmoke;
       }
     }
-    .updatePlayer {
-      transition: box-shadow 700ms ease-in-out, color 700ms ease-in-out;
-      &:hover {
-        box-shadow: 0 0 40px 40px var(--jewel) inset;
-        color: whitesmoke;
-      }
-    }
   }
 
   .player-card {
@@ -118,6 +111,22 @@
     }
     .data {
       margin-left: 2em;
+    }
+
+    .updatePlayer {
+      width: auto;
+      border: 2px solid #333;
+      padding: 0.5rem;
+      cursor: pointer;
+      border-radius: 0.6em;
+    }
+
+    .updatePlayer:hover {
+      transition: box-shadow 700ms ease-in-out, color 700ms ease-in-out;
+      &:hover {
+        box-shadow: 0 0 40px 40px var(--jewel) inset;
+        color: whitesmoke;
+      }
     }
   }
 }
