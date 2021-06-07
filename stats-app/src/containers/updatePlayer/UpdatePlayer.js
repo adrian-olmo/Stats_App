@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import './UpdatePlayer.scss';
 import { fetchDetail } from "../../services/fetchDetail";
-import { FormTeam } from "../../components/formTeam/FormTeam";
+import { FormPlayer } from "../../components/formPlayer/FormPlayer";
 import { fetchUpdateTeam } from '../../services/fetchUpdateTeam';
 import { Loading } from '../../components/loading/Loading';
 
@@ -22,15 +22,15 @@ export const UpdatePlayer = () => {
         setDetail(result)
     }
 
-    const updateDetail = async (id, name, confederation, manager, fifa_rank, total_titles, logo) => {
+    const updateDetail = async (id, name, age, matches, debut, team_id, position_id) => {
         history.push('/teams')
-        const result = await fetchUpdateTeam(id, name, confederation, manager, fifa_rank, total_titles, logo)
+        const result = await fetchUpdateTeam(id, name, age, matches, debut, team_id, position_id)
     }
 
     return (
         <div className="app-body">
             {detail &&
-                <FormTeam typeCrudAction="UPDATE" id={id} submitFunction={updateDetail} details={detail} message="Actualiza los datos del Jugador" />
+                <FormPlayer typeCrudAction="UPDATE" id={id} submitFunction={updateDetail} details={detail} message="Actualiza los datos del Jugador" />
             }
 
             {!detail &&

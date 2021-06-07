@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TeamController;
@@ -106,5 +107,15 @@ Route::group(
         Route::post('/new-player', [PlayerController::class, 'store']);
         Route::patch('/player/{id}', [PlayerController::class, 'update']);
         Route::delete('/player/{id}', [PlayerController::class, 'destroy']);
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'matches',
+        'middleware' => 'auth:api'
+    ],
+    function () {
+        Route::get('/', [MatchesController::class, 'index']);
     }
 );

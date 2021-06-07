@@ -45,7 +45,7 @@ export const FormTeam = (props) => {
         <>
             <div className='container'>
                 <h2><strong>{props.message}</strong></h2>
-                <form>
+                <form onSubmit={(e) => props.submitFunction(props.id, e)} >
                     <ul className="flex-outer">
 
                         <li>
@@ -85,7 +85,7 @@ export const FormTeam = (props) => {
 
                             {props.typeCrudAction == 'UPDATE' &&
                                 <>
-                                    <button type="submit" className='update' onClick={() => props.submitFunction(props.id, name, confederation, manager, fifa_rank, total_titles, logo)}>Actualizar</button>
+                                    <button type="submit" className='update'>Actualizar</button>
                                     <button type="submit" className='delete' onClick={() => deleteTeam(props.id)}>Borrar</button>
                                 </>
                             }

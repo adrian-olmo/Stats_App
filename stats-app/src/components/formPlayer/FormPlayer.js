@@ -55,28 +55,28 @@ export const FormPlayer = (props) => {
 
                         <li>
                             <label>Edad:</label>
-                            <input type="number" placeholder={placeholders.confederation} onInput={(e) => setAge(e.target.value)} />
+                            <input type="number" placeholder={placeholders.age} onInput={(e) => setAge(e.target.value)} />
                         </li>
 
 
                         <li>
                             <label>Partidos Oficiales: </label>
-                            <input type="number" placeholder={placeholders.manager} onInput={(e) => setMatches(e.target.value)} />
+                            <input type="number" placeholder={placeholders.matches} onInput={(e) => setMatches(e.target.value)} />
                         </li>
 
                         <li>
                             <label for="phone">Fecha Debut: </label>
-                            <input type="text" placeholder={placeholders.rank} onInput={(e) => setDebut(e.target.value)} />
+                            <input type="text" placeholder={placeholders.debut} onInput={(e) => setDebut(e.target.value)} />
                         </li>
 
                         <li>
                             <label >Seleccion Nacional: </label>
-                            <input type="text" placeholder={placeholders.titles} onInput={(e) => setTeamId(e.target.value)} />
+                            <input type="text" placeholder={placeholders.team_id} onInput={(e) => setTeamId(e.target.value)} />
                         </li>
 
                         <li>
                             <label>Posicion: </label>
-                            <input type="text" placeholder={placeholders.logo} onInput={(e) => setPositionId(e.target.value)} />
+                            <input type="text" placeholder={placeholders.position_id} onInput={(e) => setPositionId(e.target.value)} />
                         </li>
 
                         <br></br>

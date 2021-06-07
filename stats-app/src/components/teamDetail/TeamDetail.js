@@ -25,8 +25,9 @@ export const TeamDetail = (props) => {
         history.push('/new-player')
     }
 
-    const updatePlayer = async (id) => {
+    const updatePlayer = async () => {
         history.push(`/change-player/${id}`)
+
     }
 
 
