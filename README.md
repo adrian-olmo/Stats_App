@@ -13,13 +13,13 @@
   - [Features](#Features)
 
 ## Introduccion
-:memo:
+:memo: Introducción
 
 Una Aplicación que permite ver toda la información de una Selección de Futbol, ver sus plantillas, y los partidos que disputará proximamente, con el objetivo de no navegar por diferentes sitios webs para poder obtener toda esta información
 #
 
 ## Tecnologias
-:hammer_and_wrench: 
+:hammer_and_wrench:  Tecnologias
 
 Para desarrollar toda esta aplicación se han usado diferentes tecnologías tanto para front, para back e incluso para poder desplegarla. Además de trabajar con docker para evitar los problemas en diferentes entornos a la hora de desarrollar y desplegar.
 
@@ -30,3 +30,14 @@ Para visualizar todos estos datos, como interactuan las funciones con los regist
 Y por último para que todo esto estuviera accesible a todo el mundo, se puso en marcha el despliegue, separando el backend en **Heroku** y el frontend en **AWS**
 #
 
+## BackEnd
+:back: Backend
+
+Como bien se menciona anteriormente, para esta aplicación es necesario guardar, manejar e interactuar con los datos, para lograr esto es necesario almacenarlos en una base de datos y tener una serie de funciones para interacturar con estos datos. De cara a seguridad, restricciones y velocidad de lectura de datos, se eligió trabajar con una base de datos **SQL**, ya que estas tienen mayor control sobre el tipo de datos que maneja. Y para utilizar funciones que m
+
+### Base de Datos
+El planteamiento de la base de datos fue el siguiente: 
+![Database](https://user-images.githubusercontent.com/47026705/121591323-a24f8880-ca39-11eb-9d13-76dd352cee44.png)
+#
+
+#
