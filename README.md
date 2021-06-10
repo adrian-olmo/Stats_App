@@ -1,7 +1,7 @@
 # Stats App
 ## Contenido: 
 - [Introduccion](#Introduccion)
-- [Tecnologias](#:hammer_and_wrench:-Tecnologias)
+- [Tecnologias](#Tecnologias)
 - [BackEnd](#BackEnd)
   - [Base de Datos](#Base-de-Datos)
   - [Estructura de Carpetas Laravel](#Estructura-de-Carpetas-Laravel)
