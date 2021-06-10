@@ -8,6 +8,7 @@ use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use App\Models\Players;
 
 /*
@@ -34,6 +35,10 @@ Route::group(
             ],
             function () {
                 Route::get('logout', [AuthController::class, 'logout']);
+                Route::get(
+                    '/user',
+                    [AuthController::class, 'getRole']
+                );
             }
         );
     }
@@ -107,9 +112,11 @@ Route::group(
         Route::post('/new-player', [PlayerController::class, 'store']);
         Route::patch('/player/{id}', [PlayerController::class, 'update']);
         Route::delete('/player/{id}', [PlayerController::class, 'destroy']);
+        Route::get('/player/{id}', [PlayerController::class, 'findPlayer']);
     }
 );
 
+//Routes Matches
 Route::group(
     [
         'prefix' => 'matches',
@@ -117,5 +124,26 @@ Route::group(
     ],
     function () {
         Route::get('/', [MatchesController::class, 'index']);
+        Route::get('/match/{id}', [MatchesController::class, 'findMatch']);
+        Route::group(
+            [
+                'middleware' => 'scope:admin'
+            ],
+            function () {
+                Route::post('/new-match', [MatchesController::class, 'store']);
+                Route::patch('/change-match/{id}', [MatchesController::class, 'update']);
+                Route::delete('/match/{id}', [MatchesController::class, 'destroy']);
+            }
+        );
+    }
+);
+Route::group(
+    [
+        'prefix' => 'user',
+        'middleware' => 'auth:api'
+    ],
+    function () {
+        Route::get('/user/{id}', [UserController::class, 'show']);
+        Route::patch('/profile/{id}', [UserController::class, 'update']);
     }
 );
