@@ -39,5 +39,17 @@ Como bien se menciona anteriormente, para esta aplicación es necesario guardar,
 El planteamiento de la base de datos fue el siguiente: 
 ![Database](https://user-images.githubusercontent.com/47026705/121591323-a24f8880-ca39-11eb-9d13-76dd352cee44.png)
 #
-
+### Estructura de Carpetas Laravel
+                ├───app
+                    ├───Http
+                        ├───Controllers
+                        ├───Middleware
+                    ├───Models
+                    ├───Provider
+                ├───config
+                ├───database
+                    ├───factories
+                    ├───migrations
+                    ├───seeders
+                ├───routes
 #
