@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matches;
 use App\Models\Players;
 use App\Models\Teams;
 use Illuminate\Http\Request;
@@ -28,23 +29,6 @@ class TeamController extends Controller
 
     public function update(Request $request, $id)
     {
-
-        /* $validator = Validator::make($request->all(), [
-            'name' => 'string',
-            'confederation' => 'string',
-            'manager' => 'string',
-            'fifa_rank' => 'integer',
-            'total_titles' => 'integer',
-            'logo' => 'string'
-        ]);
-
-        if ($validator->fails()) {
-            response()->json([
-                'created' => false,
-                'errors' => $validator->errors()->all()
-            ], 400);
-        } */
-
         try {
             $team = Teams::findOrFail($id);
 
@@ -85,6 +69,7 @@ class TeamController extends Controller
     {
         $playerTeamId = $request->id;
         Players::where('team_id', $playerTeamId)->delete();
+        Matches::where('local_team', $playerTeamId)->orWhere('visitor_team', $playerTeamId)->delete();
         $teamData = Teams::destroy($playerTeamId);
 
         if (!$teamData) {
@@ -92,34 +77,5 @@ class TeamController extends Controller
         }
 
         return response()->json(['Delete Succesfuly'], 200);
-    }
-
-
-    //Funciones Propias
-
-    public function teamName(Request $request)
-    {
-        $name = $request->name;
-        $result = Teams::where('name', 'like', '%' . $name . '%')->get();
-
-        return response()->json($result);
-    }
-    public function teamConfederation(Request $request)
-    {
-        $confederation = $request->confederation;
-        $result = Teams::where('confederation', 'like', '%' . $confederation . '%')->get();
-
-        return response()->json($result);
-    }
-    public function teamManager(Request $request)
-    {
-        try {
-
-            $manager = $request->manager;
-            $result = Teams::where('manager', 'like', '%' . $manager . '%')->get();
-            return response()->json($result);
-        } catch (\Exception $err) {
-            return response()->json(['Error Message' => 'Entrenador no encontrado'], 400);
-        }
     }
 }
