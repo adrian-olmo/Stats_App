@@ -79,6 +79,10 @@ Para acceder a las diferentes funcionalidades se provee al backend con una serie
 
 ### FrontEnd
 ### Estructura de Carpetas
+:open_file_folder: Estructura de carpetas
+
+
+![Estructura de Carpetas](https://user-images.githubusercontent.com/47026705/121596440-b7c7b100-ca3f-11eb-8842-cd5cd5daf580.PNG)
 
 #
 
