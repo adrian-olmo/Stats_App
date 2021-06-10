@@ -9,7 +9,7 @@
   - [Endpoints](#Endpoints)
 - [FrontEnd](#FrontEnd)
   - [Estructura de Carpetas Laravel](#Estructura-de-Carpetas-Laravel)
-  - [Features](#Features)
+  - [Web](#Web)
 
 ## Introduccion
 :memo: Introducción
@@ -74,4 +74,15 @@ A su vez se podrán banear usuarios, los cuales solo tienen acceso al login y al
 
 Para acceder a las diferentes funcionalidades se provee al backend con una serie de rutas o endpoints para probar que las funcionalidades diseñadas funcionan adecuadamente.
 [Documentacion Oficial](https://lively-escape-100464.postman.co/workspace/My-Workspace~6f4dec94-5271-47cd-8bb5-f876a8ab6be4/documentation/14138566-11763189-2387-4d13-a172-ca63c7fcadaa)
+#
+#
+
+### FrontEnd
+### Estructura de Carpetas
+
+#
+
+### Web
+[Visita la pagina web](https://lively-escape-100464.postman.co/workspace/My-Workspace~6f4dec94-5271-47cd-8bb5-f876a8ab6be4/documentation/14138566-11763189-2387-4d13-a172-ca63c7fcadaa)
+#
 #
