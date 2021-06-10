@@ -1,20 +1,22 @@
-export const fetchSignup = async (name, email, password) => {
+export const fetchLogin = async (email, password) => {
 
     try {
-        const urlSignup = process.env.REACT_APP_UrlSignUp
-        const result = await fetch(urlSignup, {
+        
+        const urlLogin = process.env.REACT_APP_UrlLogin
+
+        let result = await fetch(urlLogin, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                'name': name,
                 'email': email,
                 'password': password
             })
-        });
+        })
 
+        result = result.json();
         return result;
 
     } catch (error) {
-        return error;
+        console.log(error);
     }
 }
