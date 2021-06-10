@@ -36,10 +36,14 @@ Y por último para que todo esto estuviera accesible a todo el mundo, se puso en
 Como bien se menciona anteriormente, para esta aplicación es necesario guardar, manejar e interactuar con los datos, para lograr esto es necesario almacenarlos en una base de datos y tener una serie de funciones para interacturar con estos datos. De cara a seguridad, restricciones y velocidad de lectura de datos, se eligió trabajar con una base de datos **SQL**, ya que estas tienen mayor control sobre el tipo de datos que maneja. Y para utilizar funciones que m
 
 ### Base de Datos
+:closed_book: Base de datos
+
 El planteamiento de la base de datos fue el siguiente: 
 ![Database](https://user-images.githubusercontent.com/47026705/121591323-a24f8880-ca39-11eb-9d13-76dd352cee44.png)
 #
 ### Estructura de Carpetas Laravel
+:open_file_folder: Estructura de carpetas
+
                 ├───app
                     ├───Http
                         ├───Controllers
@@ -55,6 +59,8 @@ El planteamiento de la base de datos fue el siguiente:
 #
 
 ### Autenticación y Autorización 
+:closed_lock_with_key: Autenticación y Autorización 
+
 Los nuevos usuarios deberán registrarse para acceder a los puntos dentro de la aplicación.
 Los usuarios registrados pueden iniciar sesión guarda la información en un token que permite al usuario acceder a rutas, servicios y recursos que requieren esta llave.
 
