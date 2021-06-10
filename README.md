@@ -80,6 +80,8 @@ Para acceder a las diferentes funcionalidades se provee al backend con una serie
 ### FrontEnd
 :soon: Frontend
 
+Para realizar la parte visual se ha optado por utilizar ReactJs debido al manejo de container y components
+
 ### Estructura de Carpetas
 :open_file_folder: Estructura de carpetas
 
