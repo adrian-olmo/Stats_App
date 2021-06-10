@@ -78,6 +78,8 @@ Para acceder a las diferentes funcionalidades se provee al backend con una serie
 #
 
 ### FrontEnd
+:soon: Frontend
+
 ### Estructura de Carpetas
 :open_file_folder: Estructura de carpetas
 
@@ -87,6 +89,8 @@ Para acceder a las diferentes funcionalidades se provee al backend con una serie
 #
 
 ### Web
+:globe_with_meridians:	Web
+
 [Visita la pagina web](https://lively-escape-100464.postman.co/workspace/My-Workspace~6f4dec94-5271-47cd-8bb5-f876a8ab6be4/documentation/14138566-11763189-2387-4d13-a172-ca63c7fcadaa)
 #
 #
