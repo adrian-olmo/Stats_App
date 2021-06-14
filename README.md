@@ -60,6 +60,10 @@ El planteamiento de la base de datos fue el siguiente:
 ### Autenticación y Autorización 
 :closed_lock_with_key: Autenticación y Autorización 
 
+Usuario Admin:
+  - email: admin@admin.com
+  - password: admin
+
 Los nuevos usuarios deberán registrarse para acceder a los puntos dentro de la aplicación.
 Los usuarios registrados pueden iniciar sesión guarda la información en un token que permite al usuario acceder a rutas, servicios y recursos que requieren esta llave.
 
