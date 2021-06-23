@@ -27,10 +27,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $userId = $request->user()->id;
-        $user = User::findOrFail($id)->where('id', $userId)->first;
+        $user = User::findOrFail($userId)->where('id', $userId)->first();
 
         if ($request->has('name')) {
             $user->name = $request->name;
@@ -43,6 +43,6 @@ class UserController extends Controller
         }
 
         $user->save();
-        return response()->json(['Updated Succesfully'], 201);
+        return response()->json(['message' => 'Updated Succesfully'], 201);
     }
 }

@@ -14,7 +14,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $match = Matches::select('matches.*', 'L.name as Local', 'V.name as Visitor', 'Comp.name as Competition')
+        $match = Matches::select('matches.*', 'L.name as Local', 'V.name as Visitor', 'Comp.name as Competition', 'Comp.type as Type')
             ->join('teams as L', 'matches.local_team', 'L.id')
             ->join('teams as V', 'matches.visitor_team', 'V.id')
             ->join('competitions as Comp', 'matches.competition_id', 'Comp.id')
@@ -51,7 +51,7 @@ class MatchesController extends Controller
             $match->local_team = $request->local_team;
         }
         if ($request->has('visitor_team')) {
-            $match->age = $request->age;
+            $match->visitor_team = $request->visitor_team;
         }
         if ($request->has('stadium')) {
             $match->stadium = $request->stadium;
