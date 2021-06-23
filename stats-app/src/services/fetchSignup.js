@@ -1,3 +1,6 @@
+/* import dotenv from "dotenv";
+dotenv.congif(); */
+
 export const fetchSignup = async (name, email, password) => {
 
     try {

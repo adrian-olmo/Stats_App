@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import { fetchFindUser } from "../../services/fetchFindUser";
 import { getUser } from "../../services/fetchGetUser";
 
-export const UserProfile = () => {
+export const UserProfile = (props) => {
 
     let history = useHistory();
     const [user, setUser] = useState([])
-
 
     useEffect(async () => {
         getUserLogged()
@@ -27,6 +26,7 @@ export const UserProfile = () => {
     const handlerProfile = () => {
         history.push('/user/profile/data');
     }
+    
 
     return (
 
@@ -37,7 +37,6 @@ export const UserProfile = () => {
                     <div className="product-tumb">
                         <img src={Profile} alt="" />
                     </div>
-                    {/* {usuario} */}
                     <div className="product-details">
                         <span className="product-catagory">Datos de Usuario</span>
                         <h4>Nombre:</h4>

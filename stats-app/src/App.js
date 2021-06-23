@@ -1,7 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-<<<<<<< Updated upstream
-=======
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //Containers
@@ -21,34 +19,32 @@ import { CreateMatch } from './containers/createMatch/CreateMatch';
 import { UpdateMatch } from './containers/updateMatch/UpdateMatch';
 import { UserProfile } from "./containers/userProfile/UserProfile";
 import { FormUser } from './components/formUser/FormUser';
->>>>>>> Stashed changes
+import { useEffect, useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-<<<<<<< Updated upstream
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-=======
-      <BrowserRouter>
 
-        <Navbar />
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('session')) {
+      setLogged(true);
+    }
+
+
+  })
+
+  return (
+    <BrowserRouter>
+      <div className="App">
+
+
+        <Navbar setLoggedApp={setLogged} logged={logged} />
         <Switch>
           <Route path="/" component={Gallery} exact></Route>
           <Route path="/signup" component={SignUp} exact />
-          <Route path="/login" component={Login} exact />
+          <Route path="/login">
+            <Login setLoggedApp={setLogged} />
+          </Route>
           <Route path="/teams" component={Teams} exact />
           <Route path="/detail/:id" component={TeamDetail} exact />
           <Route path="/change-team/:id" component={UpdateTeam} exact />
@@ -62,10 +58,11 @@ function App() {
           <Route path="/user/profile/data" component={FormUser} exact />
 
         </Switch>
-      </BrowserRouter>
 
->>>>>>> Stashed changes
-    </div>
+
+      </div >
+    </BrowserRouter >
+
   );
 }
 

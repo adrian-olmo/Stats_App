@@ -26,8 +26,8 @@ export const FormTeam = (props) => {
             name: props.details.name,
             confederation: props.details.confederation,
             manager: props.details.manager,
-            rank: props.details.rank,
-            titles: props.details.titles,
+            fifa_rank: props.details.fifa_rank,
+            total_titles: props.details.total_titles,
             logo: props.details.logo
         }
     }
@@ -36,8 +36,8 @@ export const FormTeam = (props) => {
             name: 'Nombre del equipo P.Ej: España',
             confederation: 'Nombre de la confederacion P.Ej: UEFA',
             manager: 'Nombre del entrenador P.Ej: Mourinho',
-            rank: 'Posicion Ranking Fifa P.Ej: 20',
-            titles: 'Numero de titulos P.Ej: 2',
+            fifa_rank: 'Posicion Ranking Fifa P.Ej: 20',
+            total_titles: 'Numero de titulos P.Ej: 2',
             logo: 'URL Logo o Bandera del equipo',
         }
     }
@@ -66,13 +66,13 @@ export const FormTeam = (props) => {
                         </li>
 
                         <li>
-                            <label for="phone">Ranking Fifa</label>
-                            <input type="number" maxLength="4" placeholder={placeholders.rank} onInput={(e) => setRanking(e.target.value)} />
+                            <label>Ranking Fifa</label>
+                            <input type="number" maxLength="4" placeholder={placeholders.fifa_rank} onInput={(e) => setRanking(e.target.value)} />
                         </li>
 
                         <li>
                             <label >Titulos Oficiales:</label>
-                            <input type="number" placeholder={placeholders.titles} onInput={(e) => setTitles(e.target.value)} />
+                            <input type="number" placeholder={placeholders.total_titles} onInput={(e) => setTitles(e.target.value)} />
                         </li>
 
                         <li>

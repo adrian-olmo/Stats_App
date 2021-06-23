@@ -11,6 +11,7 @@ export const FormPlayer = (props) => {
     const [debut, setDebut] = useState("")
     const [team_id, setTeamId] = useState("")
     const [position_id, setPositionId] = useState("")
+
     let placeholders = {};
     let history = useHistory()
     let { id } = useParams()
@@ -19,6 +20,8 @@ export const FormPlayer = (props) => {
         const result = await fetchDeletePlayer(id)
         history.push('/teams')
     }
+
+
 
     if (props.typeCrudAction == "UPDATE") {
         placeholders = {
@@ -35,8 +38,7 @@ export const FormPlayer = (props) => {
             name: 'Nombre y Primer Apellido del jugador P.Ej: Cristiano Ronalo',
             age: 'Edad del jugador P.Ej: 35',
             matches: 'Numero de partidos con la seleccion P.Ej: 150',
-            debut: 'Fecha del debut del jugador con la seleccion absoluta (YYYY-MM-DD) P.Ej: 1999-10-02',
-            team_id: 'ID de la seleccion del jugador P.Ej: 5 (Portugal)',
+            team_id: 'ID del equipo del jugador',
             position_id: 'ID de la posicion del jugador P.EJ: 10 (Delantero)',
         }
     }
@@ -66,8 +68,8 @@ export const FormPlayer = (props) => {
                         </li>
 
                         <li>
-                            <label for="phone">Fecha Debut: </label>
-                            <input type="text" placeholder={placeholders.debut} onInput={(e) => setDebut(e.target.value)} />
+                            <label>Fecha Debut: </label>
+                            <input type="date" defaultValue={placeholders.debut} onInput={(e) => setDebut(e.target.value)} />
                         </li>
 
                         <li>

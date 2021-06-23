@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Login from "./containers/login/Login";
-import SignUp from './containers/signup/Signup';
-
+import { CookiesProvider } from 'react-cookie';
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Login /> */}
-    <SignUp />
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

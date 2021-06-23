@@ -53,12 +53,13 @@ export const Matches = () => {
                             <div class="product-card">
                                 <div className="product-details">
                                     <span className="product-catagory">{partidos.Competition}</span>
+                                    <span className="product-catagory">Tipo de Competicion: {partidos.Type}</span>
                                     <h4></h4>
                                     <br />
                                     <p><strong>Equipo Local: </strong></p>
                                     <p>{partidos.Local} </p>
                                     <p><strong>Equipo Visitante: </strong></p>
-                                    <p>{partidos.Local} </p>
+                                    <p>{partidos.Visitor} </p>
                                     <p><strong>Horario y Estadio: </strong></p>
                                     <p>{partidos.date} // {partidos.stadium}</p>
                                     {admin && <p className='btn_update' onClick={() => updateMatch(partidos.id)}>Editar Datos</p>}

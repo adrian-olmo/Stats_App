@@ -14,7 +14,7 @@ export const fetchCreatePlayer = async (name, age, matches, debut, team_id, posi
                 'position_id': position_id
             })
         })
-        return result;
+        return result.json();
 
     } catch (error) {
         console.log(error);

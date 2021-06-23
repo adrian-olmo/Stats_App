@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignUp() {
+export function SignUp() {
 
     const classes = useStyles();
 
@@ -87,7 +87,7 @@ export default function SignUp() {
         if (passwordIsValid && confirmPasswordValid) {
             const newUser = await fetchSignup(name, email, password);
 
-            if (newUser.status === 200) {
+            if (newUser.status === 201) {
                 setIsValid(true);
                 setMessage("El registro se realizó correctamente");
             }
@@ -103,50 +103,44 @@ export default function SignUp() {
     }
 
     return (
-        <>
-            {isValid && <PopupSignup></PopupSignup>}
-            {!isValid && <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            {isValid && <PopupSignup />}
+            {!isValid && <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                </Avatar>
 
-                    <Typography component="h1" variant="h5">
-                        Sign up
-                </Typography>
+                <Typography component="h1" variant="h5">
+                    Sign up
+                    </Typography>
 
-                    <form className={classes.form} noValidate onSubmit={signupHandler}>
-                        <Grid container spacing={2}>
+                <form className={classes.form} noValidate onSubmit={signupHandler}>
+                    <Grid container spacing={2}>
 
-                            <Grid item xs={12}>
-                                <TextField variant="outlined" required fullWidth label="Name" onInput={e => getNameChange(e)} />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <TextField variant="outlined" required fullWidth label="Email" autoComplete="email" onInput={e => getEmailChange(e)} />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <TextField variant="outlined" required fullWidth label="Password" type="password" onInput={e => getPasswordChange(e)} />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <TextField variant="outlined" required fullWidth label="Repeat Password" type="password" onInput={e => getConfirmPassworddChange(e)} />
-                            </Grid>
-
+                        <Grid item xs={12}>
+                            <TextField variant="outlined" required fullWidth label="Name" onInput={e => getNameChange(e)} />
                         </Grid>
 
-                        <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-                            Sign Up
-                            </Button>
+                        <Grid item xs={12}>
+                            <TextField variant="outlined" required fullWidth label="Email" autoComplete="email" onInput={e => getEmailChange(e)} />
+                        </Grid>
 
-                        <Message msg={message}></Message>
+                        <Grid item xs={12}>
+                            <TextField variant="outlined" required fullWidth label="Password" type="password" onInput={e => getPasswordChange(e)} />
+                        </Grid>
 
-                    </form>
-                </div>
+                        <Grid item xs={12}>
+                            <TextField variant="outlined" required fullWidth label="Repeat Password" type="password" onInput={e => getConfirmPassworddChange(e)} />
+                        </Grid>
 
-            </Container>}
-        </>
+                    </Grid>
+
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}> Sign Up </Button>
+                    <Message msg={message} />
+                </form>
+            </div>}
+
+        </Container>
     );
 }
